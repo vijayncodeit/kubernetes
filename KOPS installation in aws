@@ -33,7 +33,8 @@ ssh-keygen -f .ssh/id_rsa
 6. Environment variables setup -- Remember cluster name should ends with k8s.local
 updated these two vars in .bashrc & .profile in ~ dir.
 export KOPS_CLUSTER_NAME=advith.k8s.local
-export KOPS_STATE_STORE=s3://kops-state-advith-bucket
+aws s3 mb s3://kops-state-advith-bucket121
+export KOPS_STATE_STORE=s3://kops-state-advith-bucket121
 
 
 7. Create cluster:: -- This will actually prepare the configuration files.
@@ -41,7 +42,7 @@ kops create cluster \
 --node-count=1 \
 --node-size=t2.micro \
 --master-size=t2.micro \
---zones=us-east-1a \
+--zones=eu-west-2a \
 --name=${KOPS_CLUSTER_NAME}
 
 (optional)if you wanted to review & edit the cluster configuration:
